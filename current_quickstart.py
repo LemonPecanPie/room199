@@ -1,7 +1,5 @@
 from __future__ import print_function
 
-from google import *
-
 import os.path
 
 from google.auth.transport.requests import Request
@@ -14,28 +12,9 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-ID = '1A6xKV6FqDTINoJtSBsczCEUo1ccnuxN2wV9pcHPbC2A'
-Range = 'Machine Data!A1:L6'
+SAMPLE_SPREADSHEET_ID = '1A6xKV6FqDTINoJtSBsczCEUo1ccnuxN2wV9pcHPbC2A'
+SAMPLE_RANGE_NAME = 'Machine Data!A1:L6'
 
-# def main():
-#   creds = None
-#   if os.path.exists('token.json'):
-#     creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-#     # If there are no (valid) credentials available, let the user log in.
-#   if not creds or not creds.valid:
-#     if creds and creds.expired and creds.refresh_token:
-#       creds.refresh(Request())
-#     else:
-#       flow = InstalledAppFlow.from_client_secrets_file(
-#            'credentials.json', SCOPES)
-#       creds = flow.run_local_server(port=0)
-#        # Save the credentials for the next run
-#     with open('token.json', 'w') as token:
-#        token.write(creds.to_json())
-#   service = build('drive', 'v3', credentials=creds)
-#   result  = service.spreadsheets().values().get(ID, Range).execute()
-#   rows = result.get('values', [])
-#   print(rows)
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -79,5 +58,6 @@ def main():
     except HttpError as err:
         print(err)
 
+
 if __name__ == '__main__':
-  main()
+    main()

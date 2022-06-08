@@ -1,7 +1,3 @@
-# NO ONE EXCEPT THE ONE-AND-ONLY KING LEMON PECAN PIE HIMSELF MAY LAY A FINGER ON THIS FILE
-#sussy baka- Milo
-# ඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞඞ
-
 import os
 from flask import Flask, redirect, url_for
 from flask_dance.contrib.google import make_google_blueprint, google

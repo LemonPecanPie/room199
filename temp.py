@@ -1,5 +1,4 @@
-# this file was made by lord lemon pecan pie
-# why won't flask work ;((((((((
+# this file was made by Aidan
 
 import flask
 
