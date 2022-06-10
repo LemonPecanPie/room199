@@ -3,15 +3,21 @@ from flask import Flask, redirect, url_for, request
 from flask_dance.contrib.google import make_google_blueprint, google
 import pprint
 import gspread
+import datetime
 
 # Google Sheets stuff
 sa = gspread.service_account(filename='service_account.json')
-sh = sa.open('Dummy Data')
-wks_verifications = sh.worksheet('Machine Data')
+sh_verifications = sa.open('Dummy Data')
+wks_verifications = sh_verifications.worksheet('Machine Data')
 
 # is a student verified to use a machine?
 def is_verified(student: str, machine: str) -> bool:
   return wks_verifications.row_values(wks_verifications.find(student).row)[wks_verifications.find(machine).col-1] == 'TRUE'
+
+sh_histories = sa.open('Machine Histories')
+wks_histories = sh_histories.worksheet('Histories')
+
+
 
 pp = pprint.PrettyPrinter()
 
@@ -222,8 +228,8 @@ def history():
 
 @app.route('/confirm')
 def confirm():
-    item = request.args.get('item')
-    confirm1 = '''
+  item = request.args.get('item')
+  confirm1 = '''
   <body class='body'>
   <h1>You are Using the {it}</h1>
   <h1></h1>
@@ -232,7 +238,7 @@ def confirm():
   <a href="interS2"><button class="button">Return to Selection</button></a>
   </body>
  '''.format(it=names[item])  ## Student is verified page
-    confirm2 = '''
+  confirm2 = '''
   <body class='body'>
   <h1>You are Using the {it}</h1>
   <h1 style="font-size:500%;color:red;font-weight=bold;margin=40px 60px;">You Are Not Verified</h1>

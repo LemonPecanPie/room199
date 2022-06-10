@@ -2,6 +2,7 @@
 # i promise this is not a rick roll
 
 import gspread
+import datetime
 
 sa = gspread.service_account(filename='service_account.json')
 sh = sa.open('Dummy Data')
@@ -38,4 +39,9 @@ print(wks.row_values(wks.find('Ape').row)[wks.find('Bandsaw').col-1])
 def is_verified(student: str, machine: str) -> bool:
   return wks.row_values(wks.find(student).row)[wks.find(machine).col-1] == 'TRUE'
 
-pri
+# wks_histories = sa.open('Machine Histories').worksheet('Histories')
+
+sh_histories = sa.open('Machine Histories')
+wks_histories = sh_histories.worksheet('Histories')
+
+print(type(datetime.date.today()))
